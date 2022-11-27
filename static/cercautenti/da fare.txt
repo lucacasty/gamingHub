@@ -1,0 +1,3 @@
+ sezCaratteristiche scrollable;
+grafica utenti trovati;
+add to my team;
