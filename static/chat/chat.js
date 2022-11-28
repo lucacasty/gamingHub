@@ -141,7 +141,7 @@ $(document).ready(function () {
   });
 
   socket.on('Error', function (data) {
-    alert(data);
+    console.log(data);
   });
   socket.on('notify_message', function (data) {
     data = JSON.parse(data);

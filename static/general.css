@@ -290,8 +290,8 @@ i {
     background-size: cover;
 }
 .imgProfile{
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
   float: left;
   border-radius: 30px;
   border:1px solid #290c42;
@@ -300,6 +300,7 @@ i {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  margin-top: 5px;
 }
 #notifica{
   position: fixed;

@@ -69,7 +69,9 @@ $(document).ready(function () {
     });
     reqPrefe.done(function (data) {
       console.log(data["preferenze"]);
-      preferenze = data["preferenze"];
+      if(typeof(data["preferenze"])!='undefined'){
+        preferenze = data["preferenze"];
+      }
       _wrapperPreferences.empty();
       for (let i = 0; i < preferenze.length; i++) {
         let reqPrefe = inviaRichiesta("GET", "/api/GameNameById", {
@@ -88,7 +90,6 @@ $(document).ready(function () {
             $("<button>").addClass("btn").addClass("btn-danger").addClass("removeNode").prop("index", preferenze[i]).addClass("badge").addClass("rounded-pill").text("X")
           ).appendTo(_wrapperPreferences);
         });
-
       }
       popupPreferenze();
     })

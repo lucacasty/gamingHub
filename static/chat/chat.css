@@ -45,7 +45,12 @@ a:hover{
     /*border-right: 3px solid #59FF3C;*/
     font-family: homeHead!important;
     color: #59CC3C;
-    margin-top: 0.5%;
+}
+.colHead h1{
+    height: 50px;
+    margin: 0;
+    line-height: 50px;
+    top: 0 !important;
 }
 .colHeadMini{
   border-right: 3px solid rgb(41, 12, 66);
@@ -65,7 +70,7 @@ a:hover{
 #rowHead{
     background-color: rgba(255, 255, 255, 0.9);
     /*border-bottom: 2px solid #59FF3C!important;*/
-    height: 8%;
+    height: 50px;
 }
 .rowHeadMobile{
     height: 100%!important;

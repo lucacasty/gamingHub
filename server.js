@@ -216,7 +216,7 @@ app.post('/api/sendMail', function (req, res, next) {
                             from: 'gamingHub2k21@gmail.com',
                             to: mail,
                             subject: 'Recover password GAMING HUB',
-                            text: 'Clicca qua per reimpostare la password.\nhttp://localhost:1337/login/recoverPwd.html'
+                            text: 'Clicca qua per reimpostare la password.\nhttp://gaming-hub-2k21.herokuapp.com//login/recoverPwd.html'
                         };
 
                         transporter.sendMail(mailOptions, function (error, info) {
@@ -1299,11 +1299,15 @@ io.on('connection', function (socket) {
                     socket.emit("Error", err.message);
                 else {
                     if (data.length > 0) {
-                        for (let item of data[0]["preferenze"]) {
-                            socket.join("f" + item);
+                        if(data[0]["preferenze"]!=null && Array.isArray(data[0]["preferenze"])){
+                            for (let item of data[0]["preferenze"]) {
+                                socket.join("f" + item);
+                            }
                         }
-                        for (let item of data[0]["team"]) {
-                            socket.join("t" + item);
+                        if(data[0]["team"]!=null && Array.isArray(data[0]["team"])){
+                            for (let item of data[0]["team"]) {
+                                socket.join("t" + item);
+                            }
                         }
                     }
                 }

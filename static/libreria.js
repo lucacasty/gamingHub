@@ -22,9 +22,9 @@ function inviaRichiesta(method, url, parameters = "", async=true, fun=function()
 
 function errore(jqXHR, testStatus, strError) {
     if (jqXHR.status == 0)
-        alert("Connection refused or Server timeout");
+        console.log("Connection refused or Server timeout");
     else if (jqXHR.status == 200)
-        alert("Errore Formattazione dati\n" + strError);
+        console.log("Errore Formattazione dati\n" + strError);
     else
-        alert("Server Error: " + jqXHR.status + " - " + jqXHR.responseText);
+        console.log("Server Error: " + jqXHR.status + " - " + jqXHR.responseText);
 }
