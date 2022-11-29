@@ -39,14 +39,16 @@ $(document).ready(function () {
       errore(jqXHR, test_status, str_error);
     });
     reqPrefe.done(function (data) {
-      if (data["preferenze"].length == 0) {
-        popupPreferenze();
+      if (typeof(data["preferenze"]) == 'undefined' || data["preferenze"].length == 0) {
+        //popupPreferenze();  function is not here
       }
       else {
         for (let index = 0; index < data["preferenze"].length; index++) {
           preferenze.push(parseInt(data["preferenze"][index]))
         }
-        teams=data["team"];
+        if(typeof(data["team"])!='undefined'){
+          teams=data["team"];
+        }
         caricaChats("forum");
       }
     });

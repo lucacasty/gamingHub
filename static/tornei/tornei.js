@@ -47,7 +47,9 @@ $(document).ready(function () {
     let request = inviaRichiesta("GET", "/api/datiPersonali", { "username": currentUser });
     request.fail(errore);
     request.done(function (data) {
-      preferenze = data.preferenze;
+      if(typeof(data.preferenze)!='undefined'){
+        preferenze = data.preferenze;
+      }
       listaPreferenze();
       listaNumber();
       torneiIscritti(data.tornei);

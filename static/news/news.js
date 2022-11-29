@@ -133,7 +133,9 @@ $(document).ready(function () {
       errore(jqXHR, test_status, str_error);
     });
     reqPrefe.done(function (data) {
-      preferenze = data["preferenze"];
+      if(typeof(data["preferenze"])!='undefined'){
+        preferenze=data["preferenze"];
+      }
       creaNotizie();
       getAllNews();
       $("#rowHead").children("div").children("h1").on("click", getAllNews);
@@ -271,6 +273,8 @@ $(document).ready(function () {
       let data = JSON.parse(body);
       datiNews = data["appnews"]["newsitems"];
       for (let index = skip; index < datiNews.length; index++) {
+        datiNews[index]['contents']=datiNews[index]['contents'].replaceAll('[','<');
+        datiNews[index]['contents']=datiNews[index]['contents'].replaceAll(']','>');
         listaNews.push(datiNews[index]);
       }
     });

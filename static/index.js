@@ -46,14 +46,16 @@ $(document).ready(function () {
       errore(jqXHR, test_status, str_error);
     });
     reqPrefe.done(function (data) {
-      if (data["preferenze"].length == 0) {
+      if (typeof(data["preferenze"]) == 'undefined' || data["preferenze"].length == 0) {
         popupPreferenze();
       }
       else {
         for (let index = 0; index < data["preferenze"].length; index++) {
           preferenze.push(parseInt(data["preferenze"][index]))
         }
-        teams=data["team"];
+        if(typeof(data["team"])!='undefined'){
+          teams=data["team"];
+        }
         skippedNews = 0;
         for (let i = 0; i < preferenze.length; i++) {
           caricaNews(preferenze[i], 5, skippedNews);
@@ -84,6 +86,8 @@ $(document).ready(function () {
       let data = JSON.parse(body);
       datiNews = data["appnews"]["newsitems"];
       for (let index = skip; index < datiNews.length; index++) {
+        datiNews[index]['contents']=datiNews[index]['contents'].replaceAll('[','<');
+        datiNews[index]['contents']=datiNews[index]['contents'].replaceAll(']','>');
         listaNews.push(datiNews[index]);
       }
     });
@@ -274,8 +278,8 @@ $(document).ready(function () {
           for (let item of datiNews) {
             testo = item["contents"];
             if (!testo.includes("{STEAM_CLAN_IMAGE}")) {
-              testo = testo.replace(/\[/g, '<');
-              testo = testo.replace(/\]/g, '>');
+              testo = testo.replaceAll('[', '<');
+              testo = testo.replaceAll(']', '>');
               let _wrapper = $("<div>").addClass("news").appendTo(_mobileWrapper);
               $("<div>").addClass("rowNewsHead").append($("<div>").addClass("newsHead")).appendTo(_wrapper);
               $("<div>").addClass("newsBody").append($("<h2>").addClass("newsTitle").on("click", showNews).prop("id", "titleMobile" + i).text(item["title"])).append($("<br>")).append($("<p>").hide().addClass("newsContent").prop("id", "contentMobile" + i).prop("vis", false).html(testo)).appendTo(_wrapper).append($("<br>")).append(
@@ -401,7 +405,7 @@ $(document).ready(function () {
       let request = inviaRichiesta("GET", "/api/salvaPreferenze", { "preferenze": preferenze });
       request.fail(errore);
       request.done(function (data) {
-
+        window.location.reload();
       });
     }
   }
