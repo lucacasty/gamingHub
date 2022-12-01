@@ -20,7 +20,7 @@ input{
 
 }   
 .rowBody{
-  height: 86%;
+  height: calc( 100% - 50px );
 }
 .colBody::-webkit-scrollbar{
   width: 5px;
@@ -98,6 +98,7 @@ i {
 .navbar-mainbg{
   background-color: rgb(41, 12, 66);
   padding: 0px;
+  height: 62.5px;
 }
 #navbarSupportedContent{
   overflow: hidden;
@@ -114,7 +115,7 @@ i {
   list-style-type: none;
   float: left;
 }
-#navbarSupportedContent ul li a{
+#navbarSupportedContent ul li div{
     color: #59CC3C;
     text-decoration: none;
     font-size: 15px;
@@ -198,7 +199,7 @@ i {
 
 
 @media (max-width: 991px){
-  #navbarSupportedContent ul li a{
+  #navbarSupportedContent ul li div{
     padding: 12px 30px;
   }
   .hori-selector{

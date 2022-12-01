@@ -198,3 +198,10 @@ strong, p{
   opacity: 0.7;
   cursor: not-allowed!important;
 }
+.page_frame{
+    border: 0 !important;
+}
+#iframe_index,
+.page_frame{
+    height: calc( 100% - 62.5px);
+}

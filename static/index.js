@@ -10,7 +10,9 @@ $(document).ready(function () {
   let _notifica = $("#notifica");
   let _colsMobile = $(".colHeadMini");
   let _wrapperPreferences = $("#listPreferences");
+  let _aPageButtons = $("#navbarSupportedContent .nav-link");
   let divResults = $("#divResults");
+  let _viewAllTournaments=$("#view_all_tournaments");
   let timeoutPreference;
   let datiNews;
   let currentUser;
@@ -70,7 +72,7 @@ $(document).ready(function () {
   setTimeout(function () { test(); });
   //#endregion
 
-  $("#listaTornei").on("click", "li", function () {
+  $("#listaTornei").on("click", "li:not(#view_all_tournaments)", function () {
     let nomeTorneo = $(this).children("p").html();
     window.location.href = "tornei/tornei.html?name=" + nomeTorneo;
   });
@@ -493,6 +495,27 @@ $(document).ready(function () {
 
   }
 
+  function changePage(index){
+    //main page management
+    if(index==0){
+      $("#iframe_index").show().removeClass('hidden');
+    }
+    else{
+      $("#iframe_index").hide().addClass('hidden');
+    }
+
+    //other pages management
+    var aIframePages=$('.container-fluid .page_frame');
+    for (var i=0;i< aIframePages.length;i++){
+      if(i+1==index){
+        $(aIframePages[i]).show().removeClass('hidden');
+      }
+      else{
+        $(aIframePages[i]).hide().addClass('hidden');
+      }
+    }
+  }
+
   // function findPhoto(id) {
   //   let retVal = "";
   //   let request = inviaRichiesta("get", "/api/getGameDetails", "idGame=" + id, false);
@@ -533,6 +556,11 @@ $(document).ready(function () {
   //   });
   //   return retVal;
   // }
+  _aPageButtons.on("click", function () {
+    let page = parseInt($(this).attr("page"));
+    changePage(page);
+  });
+
   _wrapperPreferences.on("click", 'button', function () {
     let id = $(this).prop("index");
     let index = preferenze.findIndex((item) => {
@@ -543,6 +571,9 @@ $(document).ready(function () {
     $("#" + id).removeClass("selected").addClass("nselected").prop("opacity", "true");
     if (preferenze.length == 0)
       $("#btnSave").prop("disabled", "true");
-  })
+  });
+  _viewAllTournaments.on('click',function(){
+    changePage(3);
+  });
   //#endregion
 })

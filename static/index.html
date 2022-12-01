@@ -35,25 +35,25 @@
                     <div class="right"></div>
                 </div>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#"><i class="fas fa-tachometer-alt"></i>Home</a>
+                    <div class="nav-link" page="0"><i class="fas fa-tachometer-alt"></i>Home</div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="chat/chat.html"><i class="far fa-address-book"></i>Chat</a>
+                    <div class="nav-link" page="1"><i class="far fa-address-book"></i>Chat</div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="news/news.html"><i class="far fa-clone"></i>News</a>
+                    <div class="nav-link" page="2"><i class="far fa-clone"></i>News</div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="tornei/tornei.html"><i class="far fa-calendar-alt"></i>Tournaments</a>
+                    <div class="nav-link" page="3"><i class="far fa-calendar-alt"></i>Tournaments</div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cercautenti/cercautenti.html"><i class="far fa-chart-bar"></i>Search players</a>
+                    <div class="nav-link" page="4"><i class="far fa-chart-bar"></i>Search players</div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="team/team.html"><i class="far fa-copy"></i>Team</a>
+                    <div class="nav-link" page="5"><i class="far fa-copy"></i>Team</div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="profilo/profilo.html"><i class="far fa-copy"></i>My profile</a>
+                    <div class="nav-link" page="6"><i class="far fa-copy"></i>My profile</div>
                 </li>
             </ul>
         </div>
@@ -64,78 +64,84 @@
         <div id="notifyContent"></div>
     </div>
     <div class="container-fluid">
-        <div class="row" id="rowHead">
-            <div class="col-md-3 d-none d-md-block d-lg-block colHead" align="center">
-                <h1>CHAT</h1>
+        <div id="iframe_index">
+            <div class="row" id="rowHead">
+                <div class="col-md-3 d-none d-md-block d-lg-block colHead" align="center">
+                    <h1>CHAT</h1>
+                </div>
+                <div class="col-md-6 d-none d-md-block d-lg-block colHead" align="center">
+                    <h1>NEWS</h1>
+                </div>
+                <div class="col-md-3 d-none d-md-block d-lg-block colHead" align="center">
+                    <h1>TOURNAMENTS</h1>
+                </div>
+                <div class="col-sm-12 d-md-none" align="center">
+                    <table>
+                        <tr>
+                            <td class="colHeadMini" id="colChatMobile">
+                                <img src="img/chat.png" />
+                            </td>
+                            <td class="colHeadMini active" id="colNewsMobile">
+                                <img src="img/news.png" />
+                            </td>
+                            <td class="colHeadMini" id="colTorneiMobile">
+                                <img src="img/torneo.png" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <div class="col-md-6 d-none d-md-block d-lg-block colHead" align="center">
-                <h1>NEWS</h1>
-            </div>
-            <div class="col-md-3 d-none d-md-block d-lg-block colHead" align="center">
-                <h1>TOURNAMENTS</h1>
-            </div>
-            <div class="col-sm-12 d-md-none" align="center">
-                <table>
-                    <tr>
-                        <td class="colHeadMini" id="colChatMobile">
-                            <img src="img/chat.png" />
-                        </td>
-                        <td class="colHeadMini active" id="colNewsMobile">
-                            <img src="img/news.png" />
-                        </td>
-                        <td class="colHeadMini" id="colTorneiMobile">
-                            <img src="img/torneo.png" />
-                        </td>
-                    </tr>
-                </table>
+            <div class="row rowBody">
+                <div class="col-md-3 d-none d-md-block d-lg-block colBody" id="colChatDesktop" align="center">
+                    
+                    <table class="tableLegenda">
+                        <tr>
+                            <td class="cellLegenda">
+                                <div class="legenda bg-primary active" type="forum">
+
+                                </div>
+                                <label>Forum</label>
+                            </td>
+                            <td class="cellLegenda">
+                                <div class="legenda bg-warning" type="team">
+
+                                </div>
+                                <label>Team</label>
+                            </td>
+                            <td class="cellLegenda">
+                                <div class="legenda bg-danger" type="tourney">
+
+                                </div>
+                                <label>Tournaments</label>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <ul class="list-group" id="chatWrapper">
+                    </ul>
+                </div>
+                <div class="col-md-6 d-none d-md-block d-lg-block colBody" id="colBodyDesktop" align="center">
+
+                </div>
+                <div class="col-md-3 d-none d-md-block d-lg-block colBody" align="center">
+                    <ul class="list-group" id="listaTornei">
+                        <li id="view_all_tournaments" class="list-group-item d-flex justify-content-between align-items-center" align="center">
+                            <a>View Tournaments</a>
+                        </li>
+                    
+                    </ul>
+                </div>
+                <div class="col-sm-12 d-md-none colBodyMini" id="colBodyMobile" align="center">
+                    <br>
+                </div>
             </div>
         </div>
-        <div class="row rowBody">
-            <div class="col-md-3 d-none d-md-block d-lg-block colBody" id="colChatDesktop" align="center">
-                
-                <table class="tableLegenda">
-                    <tr>
-                        <td class="cellLegenda">
-                            <div class="legenda bg-primary active" type="forum">
-
-                            </div>
-                            <label>Forum</label>
-                        </td>
-                        <td class="cellLegenda">
-                            <div class="legenda bg-warning" type="team">
-
-                            </div>
-                            <label>Team</label>
-                        </td>
-                        <td class="cellLegenda">
-                            <div class="legenda bg-danger" type="tourney">
-
-                            </div>
-                            <label>Tournaments</label>
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <ul class="list-group" id="chatWrapper">
-                </ul>
-            </div>
-            <div class="col-md-6 d-none d-md-block d-lg-block colBody" id="colBodyDesktop" align="center">
-
-            </div>
-            <div class="col-md-3 d-none d-md-block d-lg-block colBody" align="center">
-                <ul class="list-group" id="listaTornei">
-                    <li class="list-group-item d-flex justify-content-between align-items-center" align="center">
-                        
-                        
-                        <a href="team/team.html">View Tournaments</a>
-                    </li>
-                
-                </ul>
-            </div>
-            <div class="col-sm-12 d-md-none colBodyMini" id="colBodyMobile" align="center">
-                <br>
-            </div>
-        </div>
+        <iframe class="page_frame hidden" src="/chat/chat.html" width="100%" height="100%" style="display: none;"></iframe>
+        <iframe class="page_frame hidden"src="/news/news.html" width="100%" height="100%" style="display: none;"></iframe>
+        <iframe class="page_frame hidden" src="/tornei/tornei.html" width="100%" height="100%" style="display: none;"></iframe>
+        <iframe class="page_frame hidden" src="/cercautenti/cercautenti.html" width="100%" height="100%" style="display: none;"></iframe>
+        <iframe class="page_frame hidden" src="/team/team.html" width="100%" height="100%" style="display: none;"></iframe>
+        <iframe class="page_frame hidden" src="/profilo/profilo.html" width="100%" height="100%" style="display: none;"></iframe>
     </div>
 
 
